@@ -1,0 +1,43 @@
+<?page title="Lista de Usuarios" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winGastosLista" ?>
+<zk>
+	<style>
+		.ban { font: 150% sans-serif; background:transparent;}
+	</style>
+	<window id="winGastosLista" hflex="1" vflex="1" apply="ec.gerontologia.controlador.reportes.GastosC">
+		<vlayout vflex="1">
+			<hlayout  hflex="1">
+				<div align="center" hflex="1" vflex="1">
+					<label value="Listado de gastos" sclass="ban" />
+				</div>
+			</hlayout>
+			<hlayout  hflex="1">
+				<button id="btnBuscar" label="Buscar!" iconSclass="z-icon-search" />
+			</hlayout>
+			<hlayout vflex="1" hflex="1">
+				<listbox id="lstGastos" model="@{winGastosLista$composer.gastos}" hflex="1" vflex="1"
+				selectedItem="@{winGastosLista$composer.gastoSeleccionado}">
+					<listhead>
+						<listheader label="Código"/>
+						<listheader label="Fecha"/>
+						<listheader label="Actividad"/>
+						<listheader label="Total"/>
+					</listhead>
+					<template name="model">
+						<listitem>
+							<listcell label="${each.idGasto}" />
+							<listcell label="${each.fecha}" />
+							<listcell label="${each.actividad}" />
+							<listcell label="${each.total}" />
+						</listitem>
+					</template>
+				</listbox>
+			</hlayout>
+			<hlayout hflex="1" height="1">
+				<div align="center" hflex="1">			
+					<button id="btnImprimir" label="Imprimir" width="100px" height="35px"/>
+				</div>
+			</hlayout>
+		</vlayout>
+	</window>
+</zk>

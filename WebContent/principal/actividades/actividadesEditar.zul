@@ -1,0 +1,52 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winActividadEditar" ?>
+<?script src="/webjars/bootstrap/4.0.0/js/bootstrap.min.js" ?>
+<?link rel="stylesheet" href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css" ?>
+<zk>
+	<window id="winActividadEditar" border="none" width="500px"
+		apply="ec.gerontologia.controlador.actividades.ActividadesEditarC"
+		style="padding: 0 0 0 0;background:#0489B1;" position="center">
+		<caption label="Registro de datos" height="20px"
+			style="background:#0489B1;"
+			sclass="p-1 mb text-white font-italic font-weight-bold" />
+		<vlayout>
+			<grid>
+				<columns>
+					<column align="right" hflex="min" />
+					<column align="left" hflex="1" />
+				</columns>
+				<rows>
+					<row>
+						<label value="Código: " />
+						<textbox id="txtCodigo" 
+							value="@{winActividadEditar$composer.actividad.idClase}" 
+							maxlength="10" disabled="true">
+						</textbox>
+					</row>
+					<row>
+						<label value="Descripción:" />
+						<textbox id="txtDescripcion"  width="100%"
+							value="@{winActividadEditar$composer.actividad.descripcion}"/>
+					</row>
+					<row>
+						<label value="Observación: " />
+						<textbox id="txtObservacion" width="100%"
+							value="@{winActividadEditar$composer.actividad.observacion}"/>
+					</row>
+					<row>
+						<label value="Fecha:  " />
+						<datebox id="dtpFecha" width="100%"
+							value="@{winActividadEditar$composer.actividad.fecha}"/>
+					</row>
+				</rows>
+			</grid>
+			<hlayout>
+				<button id="btnGrabar" label="Grabar"
+					iconSclass="z-icon-save"
+					sclass="btn btn-outline-primary btn btn-sm" />
+				<button id="btnSalir" label="Salir"
+					iconSclass="z-icon-sign-out"
+					sclass="btn btn-outline-primary btn btn-sm" />
+			</hlayout>
+		</vlayout>
+	</window>
+</zk>

@@ -1,0 +1,65 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winConsultaEditar" ?>
+<?script src="/webjars/bootstrap/4.0.0/js/bootstrap.min.js" ?>
+<?link rel="stylesheet" href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css" ?>
+<zk>
+	<window id="winConsultaEditar" border="none" width="500px"
+		apply="ec.gerontologia.controlador.actividades.ConsultaEditarC"
+		style="padding: 0 0 0 0;background:#0489B1;" position="center">
+		<caption label="Registro de datos" height="20px"
+			style="background:#0489B1;"
+			sclass="p-1 mb text-white font-italic font-weight-bold" />
+		<vlayout>
+			<grid>
+				<columns>
+					<column align="right" hflex="min" />
+					<column align="left" hflex="1" />
+				</columns>
+				<rows>
+					<row>
+						<label value="Código: " />
+						<textbox id="txtCodigo" 
+							value="@{winConsultaEditar$composer.consulta.idVisita}" 
+							maxlength="10" disabled="true">
+						</textbox>
+					</row>
+					<row>
+						<label value="Unidad Médica:" />
+						<combobox id="cboUnidadMedica" width="90%" model="@{winConsultaEditar$composer.unidades}" readonly="true">
+							<template name="model">
+								<comboitem label="${each.unidad}" />
+							</template>
+						</combobox>
+					</row>
+					<row>
+						<label value="Persona" />
+						<combobox id="cboPersona" width="90%" model="@{winConsultaEditar$composer.personas}" readonly="true">
+							<template name="model">
+								<comboitem label="${each.persona.nombre} ${each.persona.apellido}" />
+							</template>
+						</combobox>
+					</row>
+					<row>
+						<label value="Fecha:  " />
+						<datebox id="dtpFecha" width="100%"
+							value="@{winConsultaEditar$composer.consulta.fecha}"/>
+					</row>
+					
+					<row>
+						<label value="Diagnostico: " />
+						<textbox id="txtDiagnostico" width="100%" height="150px"
+							value="@{winConsultaEditar$composer.consulta.diagnostico}"/>
+					</row>
+					
+				</rows>
+			</grid>
+			<hlayout>
+				<button id="btnGrabar" label="Grabar"
+					iconSclass="z-icon-save"
+					sclass="btn btn-outline-primary btn btn-sm" />
+				<button id="btnSalir" label="Salir"
+					iconSclass="z-icon-sign-out"
+					sclass="btn btn-outline-primary btn btn-sm" />
+			</hlayout>
+		</vlayout>
+	</window>
+</zk>

@@ -1,0 +1,75 @@
+<?page title="Lista de Periodos" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winRegistroAsistencias" ?>
+<zk>
+	<window id="winRegistroAsistencias" style="background-color: transparent;" border="none" hflex="1" vflex="1" apply="ec.gerontologia.controlador.reportes.AsistenciasC">
+		<vlayout hflex="1" vflex="1">
+			<hlayout>
+				<div align="center" hflex="1"> <label value="CONSULTA DE ASISTENCIAS" style="font-size: 20px;font-weight: bold;" /> </div>
+			</hlayout>
+			<vlayout hflex="1" vflex="1">
+				<hlayout hflex="1" vflex="1">
+					<vlayout hflex="1" vflex="1">
+						<groupbox closable="false">
+							<caption label="Seleccionar clase" sclass="customPosition" />
+							<vlayout hflex="1" vflex="1">
+								<grid style="background-color: transparent;border:none;">
+									<columns style="background-color: transparent;">
+										<column align="left" hflex="min" />
+										<column align="left" hflex="min" />
+										<column align="left" hflex="min" />
+										<column align="left" hflex="min" />
+									</columns>
+									<rows>
+										<row>
+											<cell> <label value="Código" /> </cell>
+											<cell>
+												<textbox id="txtIdClase" disabled="true" width="58%" />
+												<separator orient="vertical" width="2%" />
+												<button id="btnBuscarClase" iconSclass="z-icon-search" style="background: black; color:white;" />
+											</cell>
+											<cell> <label value="Fecha:" /> </cell>
+											<cell> <datebox id="dtpFechaClase" width="85%" disabled="true"/> </cell>
+										</row>
+										<row>
+											<cell> <label value="Descripción:" /> </cell>
+											<cell> <textbox id="txtDescripcion" width="90%" disabled="true"/> </cell>
+											<cell> <label value="Observación: " /> </cell>
+											<cell> <textbox id="txtObservacion" width="90%" disabled="true"/> </cell>
+										</row>
+									</rows>
+								</grid>
+							</vlayout>
+						</groupbox>
+						<groupbox closable="false" vflex="1" hflex="1">
+							<caption label="Listado de personas" sclass="customPosition" />
+							<hlayout vflex="1" hflex="1">
+								<listbox id="lstPersonas" model="@{winRegistroAsistencias$composer.matriculas}" hflex="1" vflex="1">
+									<listhead>
+										<listheader label="Nombres" />
+										<listheader label="Apellidos" />
+										<listheader label="Género" />
+										<listheader label="Parroquia" />
+									</listhead>
+									<template name="model">
+										<listitem>
+											<listcell label="${each.persona.nombre}" />
+											<listcell label="${each.persona.apellido}" />
+											<listcell label="${each.persona.genero}" />
+											<listcell label="${each.persona.parroquia.descripcion}" />
+										</listitem>
+									</template>
+								</listbox>
+								
+							</hlayout>
+						</groupbox>
+					</vlayout>
+				</hlayout>
+				<hlayout>
+					<div align="center" hflex="1">
+						<button id="btnImprimir" label="Imprimir"  height="35px" />
+					</div>
+				</hlayout>
+			</vlayout>
+		</vlayout>
+	</window>
+</zk>

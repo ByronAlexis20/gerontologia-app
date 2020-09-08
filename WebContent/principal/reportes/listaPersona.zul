@@ -1,0 +1,44 @@
+<?page title="Lista de Usuarios" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winPersonaLista" ?>
+<zk>
+	<style>
+		.ban { font: 150% sans-serif; background:transparent;}
+	</style>
+	<window id="winPersonaLista" hflex="1" vflex="1" apply="ec.gerontologia.controlador.reportes.ListaPersonaC">
+		<vlayout vflex="1">
+			<hlayout  hflex="1">
+				<div align="center" hflex="1" vflex="1">
+					<label value="Listado de personas" sclass="ban" />
+				</div>
+			</hlayout>
+			<hlayout  hflex="1">
+				<button id="btnBuscar" label="Buscar!" iconSclass="z-icon-search" />
+			</hlayout>
+			<hlayout vflex="1" hflex="1">
+				<listbox id="lstPersona" model="@{winPersonaLista$composer.personas}" hflex="1" vflex="1">
+					<listhead>
+						<listheader label="Cédula"/>
+						<listheader label="Nombres"/>
+						<listheader label="Apellidos"/>
+						<listheader label="Telefono"/>
+						<listheader label="Etnia"/>
+					</listhead>
+					<template name="model">
+						<listitem>
+							<listcell label="${each.persona.cedula}" />
+							<listcell label="${each.persona.nombre}" />
+							<listcell label="${each.persona.apellido}" />
+							<listcell label="${each.persona.telefono}" />
+							<listcell label="${each.persona.etnia.descripcion}" />
+						</listitem>
+					</template>
+				</listbox>
+			</hlayout>
+			<hlayout hflex="1" height="1">
+				<div align="center" hflex="1">			
+					<button id="btnImprimir" label="Imprimir" width="100px" height="35px"/>
+				</div>
+			</hlayout>
+		</vlayout>
+	</window>
+</zk>

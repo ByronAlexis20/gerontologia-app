@@ -1,0 +1,49 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winUnidadEditar" ?>
+<?script src="/webjars/bootstrap/4.0.0/js/bootstrap.min.js" ?>
+<?link rel="stylesheet" href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css" ?>
+<zk>
+	<window id="winUnidadEditar" border="none" width="500px"
+		apply="ec.gerontologia.controlador.administracion.UnidadEditarC"
+		style="padding: 0 0 0 0;background:#0489B1;" position="center">
+		<caption label="Ingrese datos" height="20px"
+			style="background:#0489B1;"
+			sclass="p-1 mb text-white font-italic font-weight-bold" />
+		<vlayout>
+			<grid>
+				<columns>
+					<column align="right" hflex="min" />
+					<column align="left" hflex="1" />
+				</columns>
+				<rows>
+					<row>
+						<label value="Código: " />
+						<textbox id="txtCodigo" 
+							value="@{winUnidadEditar$composer.unidad.idUnidad}" width="200px"
+							maxlength="10" disabled="true">
+						</textbox>
+					</row>
+					<row>
+						<label value="Unidad:" />
+						<textbox id="txtUnidad" 
+							multiline="true" width="100%" height="50px"
+							value="@{winUnidadEditar$composer.unidad.unidad}"/>
+					</row>
+					<row>
+						<label value="Representante:" />
+						<textbox id="txtRepresentante" 
+							multiline="true" width="100%" height="50px"
+							value="@{winUnidadEditar$composer.unidad.representante}"/>
+					</row>
+				</rows>
+			</grid>
+			<hlayout>
+				<button id="btnGrabar" label="Grabar"
+					iconSclass="z-icon-save"
+					sclass="btn btn-outline-primary btn btn-sm" />
+				<button id="btnSalir" label="Salir"
+					iconSclass="z-icon-sign-out"
+					sclass="btn btn-outline-primary btn btn-sm" />
+			</hlayout>
+		</vlayout>
+	</window>
+</zk>

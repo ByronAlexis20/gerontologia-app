@@ -1,0 +1,34 @@
+<zk>
+	<hbox vflex="1" hflex="1" style="background-color: #3b5998;">
+		<hbox>
+			
+		</hbox>
+		<separator orient="vertical" width="50%"/>
+		<hbox pack="start" align="start" hflex="1" vflex="1">
+			<vbox pack="center" vflex="1">
+				<label style="font: 100% sans-serif;color:white;font-size:20px" value="@load(vm.nombreCentro)"/> 
+			</vbox>
+		</hbox>
+		<hbox hflex= "1" vflex="1" pack="end" align="center">
+			<vbox vflex="1" pack="center">
+				<label value="Usuario: "
+					style="font: 100% sans-serif;color:white" />
+			</vbox>
+			<vbox vflex="1" pack="center">
+				<label value="@load(vm.nombreUsuario)"
+					style="font: 100% sans-serif;color:white" />
+			</vbox>
+			<vbox vflex="1" pack="center">
+				<h:form id="f" name="f"
+					action="j_spring_security_logout" method="POST" xmlns:h="native">
+					<html>
+						<input type="hidden"
+							name="${_csrf.parameterName}" value="${_csrf.token}" />
+					</html>
+					<button label="Salir" type="submit"
+						image="/recursos/img/13.salir.png" />
+				</h:form>
+			</vbox>
+		</hbox>
+	</hbox>
+</zk>

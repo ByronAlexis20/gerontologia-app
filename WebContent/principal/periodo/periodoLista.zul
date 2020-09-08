@@ -1,0 +1,48 @@
+<?page title="Lista de Periodos" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winPeriodoLista" ?>
+<zk>
+	<style>
+		.ban { font: 150% sans-serif; background:transparent;}
+	</style>
+	<div id="winPeriodoLista" hflex="1" vflex="1" apply="ec.gerontologia.controlador.periodo.PeriodoListaC">
+		<vlayout vflex="1">
+			<hlayout  hflex="1">
+				<div align="center" hflex="1" vflex="1">
+					<label value="Periodos lectivos" sclass="ban" />
+				</div>
+			</hlayout>
+			<hlayout  hflex="1">
+				<textbox id="txtBuscar" hflex="1" />
+				<button id="btnBuscar" label="Buscar!"
+					iconSclass="z-icon-search" />
+			</hlayout>
+			<hlayout vflex="1" hflex="1">
+				<listbox id="lstPeriodo" model="@{winPeriodoLista$composer.periodo}" hflex="1" vflex="1"
+				selectedItem="@{winPeriodoLista$composer.periodoSeleccionado}">
+					<listhead>
+						<listheader label="Descripción"/>
+						<listheader label="Fecha de inicio"/>
+						<listheader label="Fecha fin"/>
+						<listheader label="Estado"/>
+					</listhead>
+					<template name="model">
+						<listitem>
+							<listcell label="${each.descripcion}" />
+							<listcell label="${each.fechaInicio}" />
+							<listcell label="${each.fechaFin}" />
+							<listcell label="${each.estadoPeriodo}" />
+						</listitem>
+					</template>
+				</listbox>
+			</hlayout>
+			<hlayout hflex="1" height="1">
+				<div align="center" hflex="1">
+					<button id="btnNuevo" label="Nuevo" width="100px" image="/recursos/img/6.nuevo.png" height="35px"/>
+					<button id="btnEditar" label="Editar" width="100px" image="/recursos/img/9.editar.png" height="35px"/>			
+					<button id="btnEliminar" label="Eliminar" width="100px" image="/recursos/img/8.eliminar.png" height="35px"/>
+					<button id="btnFinalizar" label="Finalizar periodo" width="120px" height="35px"/>
+				</div>
+			</hlayout>
+		</vlayout>
+	</div>
+</zk>

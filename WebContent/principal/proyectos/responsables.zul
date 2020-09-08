@@ -1,0 +1,94 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winRegistroResponsables" ?>
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="winRegistroResponsables"
+		style="background-color: transparent;" border="none" hflex="1"
+		vflex="1" apply="ec.gerontologia.controlador.proyectos.ResponsableCentroC">
+		<vlayout hflex="1" vflex="1">
+			<hlayout>
+				<div align="center" hflex="1">
+					<label value="RESPONSABLES DE CENTROS"
+						style="font-size: 20px;font-weight: bold;" />
+				</div>
+			</hlayout>
+
+			<vlayout hflex="1" vflex="1">
+				<hlayout hflex="1" vflex="1">
+					<vlayout hflex="1" vflex="1">
+						<groupbox closable="false">
+							<caption label="Seleccionar centro" sclass="customPosition" />
+							<vlayout hflex="1" vflex="1">
+								<grid style="background-color: transparent;border:none;">
+									<columns
+										style="background-color: transparent;">
+										<column align="left" hflex="min" />
+										<column align="left" hflex="min" />
+										<column align="left" hflex="min" />
+										<column align="left" hflex="min" />
+									</columns>
+									<rows>
+										<row>
+											<cell> <label value="Código"/> </cell>
+											<cell>
+												<textbox id="txtIdCentro" disabled="true" width="58%" />
+												<separator orient="vertical" width="2%" />
+												<button id="btnBuscarCentro" iconSclass="z-icon-search"
+													style="background: black; color:white;" />
+											</cell>
+											<cell>
+												<label value="Dirección: " />
+											</cell>
+											<cell rowspan="2">
+												<textbox id="txtDireccion" width="95%" vflex="1" disabled="true"/>
+											</cell>
+										</row>
+										<row>
+											<cell> <label value="Nombre: " /> </cell>
+											<cell> <textbox id="txtNombreCentro" width="95%" disabled="true"/> </cell>
+										</row>
+									</rows>
+								</grid>
+							</vlayout>
+						</groupbox>
+
+
+						<groupbox closable="false" vflex="1"
+							hflex="1">
+							<caption label="Listado de personas" sclass="customPosition" />
+							<vbox vflex="1" hflex="1">
+								<hbox>
+									<button id="btnAgregar" label="Agregar"></button>
+									<button id="btnQuitar" label="Quitar"></button>
+								</hbox>
+								<hbox vflex="1">
+									<listbox id="lstEncargados"
+										model="@{winRegistroResponsables$composer.encargado}" hflex="1"
+										vflex="1"
+										selectedItem="@{winRegistroResponsables$composer.encargadoSeleccionado}">
+										<listhead>
+											<listheader label="Código" />
+											<listheader label="Nombres" />
+											<listheader label="Apellidos" />
+											<listheader label="Usuario" />
+											<listheader label="Rol" />
+										</listhead>
+										<template name="model">
+											<listitem>
+												<listcell label="${each.idEncargado}"/>
+												<listcell label="${each.usuario.nombre}"/>
+												<listcell label="${each.usuario.apellido}"/>
+												<listcell label="${each.usuario.usuario}"/>
+												<listcell label="${each.usuario.perfil.nombre}"/>
+											</listitem>
+										</template>
+									</listbox>
+								</hbox>
+							</vbox>
+						</groupbox>
+					</vlayout>
+				</hlayout>
+			</vlayout>
+		</vlayout>
+
+	</window>
+</zk>

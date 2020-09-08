@@ -1,0 +1,38 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winSeleccionarCentroLista" ?>
+<zk>
+	<window id="winSeleccionarCentroLista" border="none" width="60%" height="50%" title="Lista de centros"
+		apply="ec.gerontologia.controlador.proyectos.SeleccionarCentroC">
+		<vlayout vflex="1" hflex="1">
+			<hlayout  hflex="1">
+				<textbox id="txtBuscar" hflex="1" />
+				<button id="btnBuscar" label="Buscar!"
+					iconSclass="z-icon-search" />
+			</hlayout>
+			<hlayout vflex="1" hflex="1">
+				<listbox id="lstCentro" model="@{winSeleccionarCentroLista$composer.centro}" hflex="1" vflex="1"
+				selectedItem="@{winSeleccionarCentroLista$composer.centroSeleccionado}">
+					<listhead>
+						<listheader label="Codigo"/>
+						<listheader label="Empresa Máxima"/>
+						<listheader label="Nombre del centro"/>
+						<listheader label="Dirección"/>
+						<listheader label="Estado"/>
+					</listhead>
+					<template name="model">
+						<listitem>
+							<listcell label="${each.idCentro}"/>
+							<listcell label="${each.empresa.razonSocial}"/>
+							<listcell label="${each.nombreCentro}"/>
+							<listcell label="${each.direccion}" />
+							<listcell label="${each.estado}" />
+						</listitem>
+					</template>
+				</listbox>
+			</hlayout>
+			<hlayout hflex="1">
+				<button id="btnSalir" label="Salir" iconSclass="z-icon-sign-out" />
+				<button id="btnAceptar" label="Aceptar" iconSclass="z-icon-check"  />
+			</hlayout>
+		</vlayout>
+	</window>
+</zk>

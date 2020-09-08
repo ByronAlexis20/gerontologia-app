@@ -1,0 +1,55 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winPeriodoEditar" ?>
+<?script src="/webjars/bootstrap/4.0.0/js/bootstrap.min.js" ?>
+<?link rel="stylesheet" href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css" ?>
+<zk>
+	<window id="winPeriodoEditar" border="none" width="500px"
+		apply="ec.gerontologia.controlador.periodo.PeriodoEditarC"
+		style="padding: 0 0 0 0;background:#0489B1;" position="center">
+		<caption label="Ingrese datos" height="20px"
+			style="background:#0489B1;"
+			sclass="p-1 mb text-white font-italic font-weight-bold" />
+		<vlayout>
+			<grid>
+				<columns>
+					<column align="right" hflex="min" />
+					<column align="left" hflex="1" />
+				</columns>
+				<rows>
+					<row>
+						<label value="Código: " />
+						<textbox id="txtCodigo" 
+							value="@{winPeriodoEditar$composer.periodo.idPeriodo}" 
+							maxlength="10" disabled="true">
+						</textbox>
+					</row>
+					<row>
+						<label value="Descripción:" />
+						<textbox id="txtDescripcion" 
+							multiline="true"  height="100px" width="100%"
+							value="@{winPeriodoEditar$composer.periodo.descripcion}"/>
+					</row>
+					<row>
+						<label value="Fecha de Inicio" />
+						<datebox id="dtpFechaInicio" 
+							width="100%"
+							value="@{winPeriodoEditar$composer.periodo.fechaInicio}"/>
+					</row>
+					<row>
+						<label value="Fecha fin:" />
+						<datebox id="dtpFechaFin" 
+							width="100%"
+							value="@{winPeriodoEditar$composer.periodo.fechaFin}"/>
+					</row>
+				</rows>
+			</grid>
+			<hlayout>
+				<button id="btnGrabar" label="Grabar"
+					iconSclass="z-icon-save"
+					sclass="btn btn-outline-primary btn btn-sm" />
+				<button id="btnSalir" label="Salir"
+					iconSclass="z-icon-sign-out"
+					sclass="btn btn-outline-primary btn btn-sm" />
+			</hlayout>
+		</vlayout>
+	</window>
+</zk>

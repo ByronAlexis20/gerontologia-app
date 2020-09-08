@@ -1,0 +1,57 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winCentroEditar" ?>
+<?script src="/webjars/bootstrap/4.0.0/js/bootstrap.min.js" ?>
+<?link rel="stylesheet" href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css" ?>
+<zk>
+	<window id="winCentroEditar" border="none" width="500px"
+		apply="ec.gerontologia.controlador.proyectos.CentroEditarC"
+		style="padding: 0 0 0 0;background:#0489B1;" position="center">
+		<caption label="Ingrese datos" height="20px"
+			style="background:#0489B1;"
+			sclass="p-1 mb text-white font-italic font-weight-bold" />
+		<vlayout>
+			<grid>
+				<columns>
+					<column align="right" hflex="min" />
+					<column align="left" hflex="1" />
+				</columns>
+				<rows>
+					<row>
+						<label value="Empresa: " />
+						<textbox id="txtEmpresa" disabled="true" width="100%" height="30px"> </textbox>
+					</row>
+					<row>
+						<label value="" />
+						<label value="" />
+					</row>
+					<row>
+						<label value="Código: "/>
+						<textbox id="txtCodigo" 
+							value="@{winCentroEditar$composer.centro.idCentro}" 
+							maxlength="10" disabled="true">
+						</textbox>
+					</row>
+					<row>
+						<label value="Nombre del centro "/>
+						<textbox id="txtNombre" 
+							multiline="true"  height="50px" width="100%"
+							value="@{winCentroEditar$composer.centro.nombreCentro}"/>
+					</row>
+					<row>
+						<label value="Dirección: "/>
+						<textbox id="txtDireccion" 
+							multiline="true"  height="50px" width="100%"
+							value="@{winCentroEditar$composer.centro.direccion}"/>
+					</row>
+				</rows>
+			</grid>
+			<hlayout>
+				<button id="btnGrabar" label="Grabar"
+					iconSclass="z-icon-save"
+					sclass="btn btn-outline-primary btn btn-sm" />
+				<button id="btnSalir" label="Salir"
+					iconSclass="z-icon-sign-out"
+					sclass="btn btn-outline-primary btn btn-sm" />
+			</hlayout>
+		</vlayout>
+	</window>
+</zk>

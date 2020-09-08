@@ -1,0 +1,113 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winCabeceraFactura" ?>
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="winCabeceraFactura"
+		style="background-color: transparent;" border="none" hflex="1"
+		vflex="1" apply="ec.gerontologia.controlador.gastos.GastosCabeceraC">
+		<vlayout hflex="1" vflex="1">
+			<hlayout>
+				<div align="center" hflex="1">
+					<label value="REGISTRO DE GASTOS"
+						style="font-size: 20px;font-weight: bold;" />
+				</div>
+			</hlayout>
+
+			<vlayout hflex="1" vflex="1">
+				<hlayout hflex="1" vflex="1">
+					<vlayout hflex="1" vflex="1">
+						<groupbox closable="false">
+							<caption label="Datos de la cabecera de factura" sclass="customPosition" />
+							<vlayout hflex="1" vflex="1">
+								<grid style="background-color: transparent;border:none;">
+									<columns
+										style="background-color: transparent;">
+										<column align="left" hflex="min" />
+										<column align="left" hflex="min" />
+										<column align="left" hflex="min" />
+										<column align="left" hflex="min" />
+									</columns>
+									<rows>
+										<row>
+											<cell> <label value="Código"/> </cell>
+											<cell>
+												<textbox id="txtCodigo" width="58%" disabled="true"/>
+											</cell>
+											<cell>
+												<label value="Fecha " />
+											</cell>
+											<cell rowspan="2">
+												<datebox id="dtpFecha" width="95%" vflex="1"/>
+											</cell>
+										</row>
+										<row>
+											<cell> <label value="Seleccione actividad: " /> </cell>
+											<cell> <combobox id="cboActividad" width="90%" model="@{winCabeceraFactura$composer.actividades}" readonly="true">
+														<template name="model">
+															<comboitem label="${each.descripcion}" />
+														</template>
+													</combobox>
+											</cell>
+										</row>
+									</rows>
+								</grid>
+							</vlayout>
+						</groupbox>
+						<groupbox closable="false" vflex="1"
+							hflex="1">
+							<caption label="Detalle de gastos" sclass="customPosition" />
+							<vbox vflex="1" hflex="1">
+								<hbox>
+									<button id="btnAgregar" label="Agregar Rubro"></button>
+									<button id="btnQuitar" label="Quitar Rubro"></button>
+								</hbox>
+								<hbox vflex="1">
+									<listbox id="lstDetalle"
+										model="@{winCabeceraFactura$composer.detalles}" hflex="1"
+										vflex="1"
+										selectedItem="@{winCabeceraFactura$composer.detalleSeleccionado}">
+										<listhead>
+											<listheader label="Cantidad" />
+											<listheader label="Servicio" />
+											<listheader label="Precio Unitario" />
+											<listheader label="Total" />
+										</listhead>
+										<template name="model">
+											<listitem>
+												<listcell label="${each.cantidad}"/>
+												<listcell label="${each.servicio}"/>
+												<listcell label="${each.precio}" />
+												<listcell label="${each.total}" />
+											</listitem>
+										</template>
+									</listbox>
+								</hbox>
+							</vbox>
+						</groupbox>
+						<groupbox closable="false">
+							<vlayout hflex="1" vflex="1">
+								<grid style="background-color: transparent;border:none;">
+									<columns
+										style="background-color: transparent;">
+										<column align="right" hflex="min" />
+										<column align="right" hflex="min" />
+										<column align="right"  />
+										<column align="right" hflex="min" />
+									</columns>
+									<rows>
+										<row>
+											<cell><button id="btnGrabar" label="Grabar"></button> </cell>
+											<cell><button id="btnNuevo" label="Nuevo"></button> </cell>
+											<cell> <label value="Total"/> </cell>
+											<cell> <textbox width="200px" id="txtTotal" disabled="true"/> </cell>
+										</row>
+									</rows>
+								</grid>
+							</vlayout>
+						</groupbox>
+					</vlayout>
+				</hlayout>
+			</vlayout>
+		</vlayout>
+
+	</window>
+</zk>

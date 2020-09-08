@@ -1,0 +1,70 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winRegistroEmpresa"?>
+<zk>
+	<window id="winRegistroEmpresa" vflex="1" hflex="1" apply="ec.gerontologia.controlador.administracion.EmpresaC">
+		<hbox vflex="1" hflex="1" align="center" pack="center">
+			<vbox width="40%" align="center" pack="center">
+				<label value="DATOS DE LA EMPRESA" style="font-size: 20px;font-weight: bold;" />
+				<groupbox hflex="1" vflex="min">
+					<vlayout hflex="1" vflex="1">
+						<grid style="background-color: transparent;border:none;">
+							<columns style="background-color: transparent;">
+								<column align="left" hflex="min"/>
+								<column align="left" />
+							</columns>
+							<rows>
+								<row align="center">
+									<cell sclass="row-title">RUC:</cell>
+									<cell> 
+										<textbox id="txtRuc" width="85%" maxlength="13" xmlns:w="client">
+											<attribute w:name="doKeyDown_"><![CDATA[
+												function (evt) {
+													var keyCode = event.keyCode;
+													if( keyCode == 8 // back space
+														|| keyCode == 13 // enter
+														|| keyCode == 16 // enter
+														|| (keyCode >= 35 && keyCode <= 40) // home, end, arrows
+														|| keyCode == 46) { // Delete
+														this.$doKeyDown_(evt);
+													} else if ( !evt.shiftKey &&  // only do without shift key
+														(keyCode >= 48 && keyCode <= 57)
+														|| (keyCode >= 96 && keyCode <= 105)) {// number range
+														this.$doKeyDown_(evt);
+													} else {
+														evt.stop();
+														return;
+													}
+												}
+											]]></attribute>
+										</textbox> 
+									</cell>
+								</row>
+								<row align="center">
+									<cell sclass="row-title">RAZÓN SOCIAL:</cell>
+									<cell> <textbox id="txtRazonSocial" width="85%" maxlength="250"/> </cell>
+								</row>
+								<row align="center">
+									<cell sclass="row-title">REPRESENTANTE:</cell>
+									<cell> <textbox id="txtRepresentante" width="85%" maxlength="150"/> </cell>
+								</row>
+								<row align="center">
+									<cell>EMAIL: </cell>
+									<cell> <textbox id="txtEmail" width="85%" maxlength="100"/> </cell>
+								</row>
+								<row align="center">
+									<cell>DIRECCIÓN: </cell>
+									<cell> <textbox id="txtDireccion" width="85%" maxlength="250"/> </cell>
+								</row>
+								
+							</rows>
+						</grid>
+						<hbox>
+							<button id="btnGrabar" label="Grabar" iconSclass="z-icon-save" height="38px" style="background: black; color:white;  -webkit-border-radius: .5em;    -moz-border-radius: .5em;    border-radius: .5em; font: 85% sans-serif"/>
+						</hbox>
+					</vlayout>
+				</groupbox>
+			</vbox>
+		</hbox>
+	</window>
+</zk>
+
+

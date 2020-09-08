@@ -1,0 +1,55 @@
+<?page title="Permisos" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="winOpcionPerfilEditar" border="none" hflex="1" vflex="1"
+		
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('ec.gerontologia.controlador.seguridad.AccesosC')">
+		<vlayout hflex="1" vflex="1">
+			<groupbox>
+				<hlayout>
+					<div>
+						<label value="Perfil:" />
+						<combobox model="@load(vm.perfiles)"
+							placeholder="Seleccione perfil"
+							onSelect="@command('cargarOpciones')"
+							selectedItem="@bind(vm.perfilSeleccionado)"
+							value="@load(vm.permiso.perfil.nombre)" width="300px">
+						</combobox>
+					</div>					
+					<space/>
+					<div>
+						<button label="Grabar" iconSclass="z-icon-save" zclass="btn btn-outline-danger btn btn-sm" onClick="@command('grabar')" />
+					</div>
+				</hlayout>
+			</groupbox>
+			<hbox hflex="1" vflex="1" align="center">
+				<listbox model="@load(vm.opcionesDisponible)" autopaging="true" mold="paging" selectedItem="@bind(vm.opcionSeleccionadoAgregar)" hflex="1" vflex="1">
+					<listhead>
+						<listheader label="Opciones Disponible" />
+					</listhead>
+					<template name="model">
+						<listitem>
+							<listcell label="@load(each.titulo)" />
+						</listitem>
+					</template>
+				</listbox>
+				<vbox>
+					<button iconSclass="z-icon-angle-right" disabled="@bind(empty vm.opcionSeleccionadoAgregar)" sclass="btn btn-outline-success" onClick="@command('agregar')" />
+					<button iconSclass="z-icon-angle-double-right" disabled="@bind(empty vm.opcionesDisponible)" sclass="btn btn-outline-success" onClick="@command('agregartodo')" />
+					<button iconSclass="z-icon-angle-left" disabled="@bind(empty vm.opcionSeleccionadoQuitar)" sclass="btn btn-outline-success" onClick="@command('quitar')" />
+					<button iconSclass="z-icon-angle-double-left" disabled="@bind(empty vm.permisosAsignadas)" sclass="btn btn-outline-success" onClick="@command('quitartodo')" />
+				</vbox>
+				<listbox model="@load(vm.permisosAsignadas)" autopaging="true" mold="paging" selectedItem="@bind(vm.opcionSeleccionadoQuitar)" hflex="1" vflex="1">
+					<listhead>
+						<listheader label="Opción Asignada" />
+					</listhead>
+					<template name="model">
+						<listitem>
+							<listcell label="@load(each.menu.titulo)" />
+						</listitem>
+					</template>
+				</listbox>
+			</hbox>
+		</vlayout>
+	</window>
+</zk>

@@ -1,0 +1,50 @@
+<?page title="Lista de Periodos" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winPersonaCentro" ?>
+<zk>
+	<style>
+		.ban { font: 150% sans-serif; background:transparent;}
+	</style>
+	<window id="winPersonaCentro" hflex="1" vflex="1" apply="ec.gerontologia.controlador.reportes.PersonaCentroC">
+		<vlayout vflex="1">
+			<hlayout  hflex="1">
+				<div align="center" hflex="1" vflex="1">
+					<label value="Lista de Personas" sclass="ban" />
+				</div>
+			</hlayout>
+			<hlayout  hflex="1">
+				<combobox id="cboCentros" width="90%" model="@{winPersonaCentro$composer.centros}" readonly="true">
+					<template name="model">
+						<comboitem label="${each.nombreCentro}" />
+					</template>
+				</combobox>
+				<button id="btnBuscar" label="Buscar!"
+					iconSclass="z-icon-search" />
+			</hlayout>
+			<hlayout vflex="1" hflex="1">
+				<listbox id="lstPersonas" model="@{winPersonaCentro$composer.personas}" hflex="1" vflex="1">
+					<listhead>
+						<listheader label="Cédula"/>
+						<listheader label="Nombres"/>
+						<listheader label="Apellidos"/>
+						<listheader label="Telefono"/>
+						<listheader label="Etnia"/>
+					</listhead>
+					<template name="model">
+						<listitem>
+							<listcell label="${each.persona.cedula}" />
+							<listcell label="${each.persona.nombre}" />
+							<listcell label="${each.persona.apellido}" />
+							<listcell label="${each.persona.telefono}" />
+							<listcell label="${each.persona.etnia.descripcion}" />
+						</listitem>
+					</template>
+				</listbox>
+			</hlayout>
+			<hlayout hflex="1" height="1">
+				<div align="center" hflex="1">
+					<button id="btnImprimir" label="Imprimir" width="100px" height="35px"/>
+				</div>
+			</hlayout>
+		</vlayout>
+	</window>
+</zk>

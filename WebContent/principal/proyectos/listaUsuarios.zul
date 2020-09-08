@@ -1,0 +1,38 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winSeleccionarUsuario" ?>
+<zk>
+	<window id="winSeleccionarUsuario" border="none" width="60%" height="50%" title="Lista de usuarios"
+		apply="ec.gerontologia.controlador.proyectos.ListaUsuariosC">
+		<vlayout vflex="1" hflex="1">
+			<hlayout  hflex="1">
+				<textbox id="txtBuscar" hflex="1" />
+				<button id="btnBuscar" label="Buscar!"
+					iconSclass="z-icon-search" />
+			</hlayout>
+			<hlayout vflex="1" hflex="1">
+				<listbox id="lstUsuario" model="@{winSeleccionarUsuario$composer.usuarios}" hflex="1" vflex="1"
+				selectedItem="@{winSeleccionarUsuario$composer.usuarioSeleccionado}">
+					<listhead>
+						<listheader label="Codigo"/>
+						<listheader label="Nombres"/>
+						<listheader label="Apellidos"/>
+						<listheader label="Usuario"/>
+						<listheader label="Estado"/>
+					</listhead>
+					<template name="model">
+						<listitem>
+							<listcell label="${each.idUsuario}"/>
+							<listcell label="${each.nombre}"/>
+							<listcell label="${each.apellido}"/>
+							<listcell label="${each.usuario}" />
+							<listcell label="${each.estado}" />
+						</listitem>
+					</template>
+				</listbox>
+			</hlayout>
+			<hlayout hflex="1">
+				<button id="btnSalir" label="Salir" iconSclass="z-icon-sign-out" />
+				<button id="btnAceptar" label="Aceptar" iconSclass="z-icon-check"  />
+			</hlayout>
+		</vlayout>
+	</window>
+</zk>

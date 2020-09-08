@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="gerontologia-app" transaction-type="RESOURCE_LOCAL">
+		<class>ec.gerontologia.modelo.Asistencia</class>
+		<class>ec.gerontologia.modelo.Canton</class>
+		<class>ec.gerontologia.modelo.Centro</class>
+		<class>ec.gerontologia.modelo.Clase</class>
+		<class>ec.gerontologia.modelo.Discapacidad</class>
+		<class>ec.gerontologia.modelo.Documento</class>
+		<class>ec.gerontologia.modelo.Empresa</class>
+		<class>ec.gerontologia.modelo.Encargado</class>
+		<class>ec.gerontologia.modelo.EstadoVivienda</class>
+		<class>ec.gerontologia.modelo.Etnia</class>
+		<class>ec.gerontologia.modelo.Instruccion</class>
+		<class>ec.gerontologia.modelo.Matricula</class>
+		<class>ec.gerontologia.modelo.Menu</class>
+		<class>ec.gerontologia.modelo.Parentesco</class>
+		<class>ec.gerontologia.modelo.Parroquia</class>
+		<class>ec.gerontologia.modelo.Perfil</class>
+		<class>ec.gerontologia.modelo.PeriodoLectivo</class>
+		<class>ec.gerontologia.modelo.Permiso</class>
+		<class>ec.gerontologia.modelo.Persona</class>
+		<class>ec.gerontologia.modelo.Provincia</class>
+		<class>ec.gerontologia.modelo.Representante</class>
+		<class>ec.gerontologia.modelo.Salud</class>
+		<class>ec.gerontologia.modelo.Servicio</class>
+		<class>ec.gerontologia.modelo.UnidadMedica</class>
+		<class>ec.gerontologia.modelo.Usuario</class>
+		<class>ec.gerontologia.modelo.VisitaMedica</class>
+		<class>ec.gerontologia.modelo.Vivienda</class>
+		<class>ec.gerontologia.modelo.Gasto</class>
+		<class>ec.gerontologia.modelo.GastosDetalle</class>
+		<class>ec.gerontologia.modelo.Actividad</class>
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bd_gerontologia"/>
+			<property name="javax.persistence.jdbc.user" value="root"/>
+			<property name="javax.persistence.jdbc.password" value="tricampeon2015"/>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+		</properties>
+	</persistence-unit>
+</persistence>
